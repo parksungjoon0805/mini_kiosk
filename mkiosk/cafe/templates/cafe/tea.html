@@ -1,0 +1,16 @@
+<h1>Tea 리스트</h1>
+{% for lion in lions %}
+    <h3>카테고리 : <a href="{% url 'home' %}">Home</a></h3>
+    <h3>카테고리: <a href="{% url 'coffee' %}">Coffee</a></h3>
+    <h3>카테고리: <a href="{% url 'tea' %}">Tea</a></h3>
+    <h3>카테고리: <a href="{% url 'dessert' %}">Dessert</a></h3>
+    <form action="{% url 'order' %}" method="post">
+        {% csrf_token %}
+        {% for item in lion.item_set.all %}
+            <input type="radio" name="item" value="{{ item.id }}"> {{ item.name }} - {{ item.price }}원
+            <br>
+        {% endfor %}
+        <input type="number" name="quantity" value="1" >
+        <button type="submit">선택</button>
+    </form>
+{% endfor %}

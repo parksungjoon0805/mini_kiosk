@@ -1,0 +1,8 @@
+<h1> 전체 리스트 </h1>
+{% for lion in lions %}
+    <h3>카테고리 : <a href="{% url lion.name %}">{{ lion.name }}</a></h3>
+    <!-- {% for item in lion.item_set.all %}
+        이름 : {{item.name}}  가격 : {{item.price}}
+        <br>
+    {% endfor %} -->
+{% endfor %}
